@@ -1,0 +1,237 @@
+@charset "UTF-8";
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-width: 1440px;
+  color: #2b2b2b;
+  background: #fff;
+  font-family: "Noto Sans JP", "Noto Sans CJK JP", sans-serif;
+  font-weight: 400;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; }
+
+.hero {
+  position: relative;
+  width: 1440px;
+  height: 663px;
+  margin: 0 auto;
+  background: url("../assets/Figma_top.png") center/1440px 663px no-repeat;
+  color: #fff;
+}
+.global-nav {
+  position: absolute;
+  top: 40px;
+  left: 20px;
+  right: 20px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 500;
+}
+.brand { color: #151515; }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  color: #151515;
+}
+.contact-btn {
+  width: 155px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: #0065a8;
+  border-radius: 999px;
+}
+.hero-copy {
+  position: absolute;
+  top: 264px;
+  left: 50%;
+  width: 900px;
+  transform: translateX(-50%);
+  text-align: center;
+}
+.hero-copy h1 {
+  margin: 0;
+  font-size: 56px;
+  line-height: 1.15;
+  letter-spacing: .02em;
+  font-weight: 700;
+}
+.hero-copy p {
+  margin: 28px 0 0;
+  font-size: 14px;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+.section-white { width: 1440px; margin: 0 auto; background: #fff; }
+.section-heading { text-align: center; }
+.section-heading h2 {
+  margin: 0;
+  font-size: 42px;
+  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: .01em;
+}
+.section-heading p {
+  margin: 5px 0 0;
+  color: #0065a8;
+  font-size: 13px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.service {
+  height: 760px;
+  padding-top: 164px;
+}
+.service-grid {
+  width: 1302px;
+  margin: 79px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 390px);
+  justify-content: space-between;
+}
+.service-item { text-align: center; }
+.service-icon {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: #0065a8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.service-item:nth-child(1) .service-icon img { width: 92px; height: auto; }
+.service-item:nth-child(2) .service-icon img { width: 100px; height: auto; }
+.service-item:nth-child(3) .service-icon img { width: 91px; height: auto; }
+.service-item h3 {
+  margin: 25px 0 0;
+  font-size: 24px;
+  line-height: 1.25;
+  font-weight: 600;
+}
+.service-item > p {
+  margin: 14px 0 0;
+  text-align: left;
+  font-size: 16px;
+  line-height: 1.45;
+  font-weight: 500;
+}
+
+.works {
+  height: 1250px;
+  padding-top: 0;
+}
+.works-grid {
+  width: 1030px;
+  margin: 68px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 300px);
+  column-gap: 65px;
+  row-gap: 64px;
+}
+.work-card img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+}
+.work-card h3 {
+  margin: 20px 0 0;
+  font-size: 17px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+.work-card span {
+  display: inline-block;
+  margin-top: 27px;
+  padding: 2px 8px 3px;
+  border-radius: 2px;
+  background: #f3f3f3;
+  color: #555;
+  font-size: 11px;
+  line-height: 1.4;
+  font-weight: 400;
+}
+.view-more {
+  width: 175px;
+  height: 41px;
+  margin: 75px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #0065a8;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.about {
+  width: 1440px;
+  height: 580px;
+  margin: 0 auto 49px;
+  padding-top: 123px;
+  background: #eeeeee;
+}
+.about-inner {
+  width: 704px;
+  margin: 71px auto 0;
+  display: flex;
+  align-items: center;
+  gap: 64px;
+}
+.about-photo {
+  width: 180px;
+  height: 180px;
+  flex: 0 0 180px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.about-photo img {
+  width: 270px;
+  height: 180px;
+  object-fit: cover;
+  object-position: left center;
+}
+.about-copy {
+  width: 460px;
+}
+.about-copy h3 {
+  margin: 0 0 13px;
+  font-size: 27px;
+  line-height: 1.2;
+  font-weight: 400;
+}
+.about-copy p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+  font-weight: 400;
+}
+
+footer {
+  width: 1440px;
+  height: 38px;
+  margin: 0 auto;
+  background: #0092f3;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 21px;
+}
+footer small {
+  font-size: 10px;
+  line-height: 1;
+}
