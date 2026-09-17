@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <header class="hero" id="top">
+  <header class="hero reveal-section" id="top">
     <nav class="global-nav" aria-label="メインナビゲーション">
       <a class="brand" href="#top">Edix Works</a>
       <div class="nav-links">
@@ -23,13 +23,13 @@
       </div>
     </nav>
     <div class="hero-copy">
-      <h1>EDIX WORKS</h1>
+      <h1>道明央成</h1>
       <p>東京都を拠点に活動するデザイナーです。グラフィックデザインとWebデザインが得意です。</p>
     </div>
   </header>
 
   <main>
-    <section class="service section-white" id="service">
+    <section class="service section-white reveal-section" id="service">
       <div class="section-heading">
         <h2>Service</h2>
         <p>サービス</p>
@@ -53,12 +53,12 @@
       </div>
     </section>
 
-    <section class="works section-white" id="works">
+    <section class="works section-white reveal-section" id="works">
       <div class="section-heading">
         <h2>Works</h2>
         <p>制作実績</p>
       </div>
-      <div class="works-grid">
+      <div class="works-grid" id="worksGrid">
         <article class="work-card"><img src="./assets/work1.jpg" alt="制作実績1">
           <h3>ポートフォリオサイト制作</h3>
           <p>Figmaでデザインを設計し、AIを活用して、HTML/CSSで実装した個人サイトです。</p>
@@ -80,16 +80,17 @@
           <h3>プロジェクト名が入ります</h3><span>ウェブデザイン</span>
         </article>
       </div>
+      <div class="works-dots" aria-label="作品スライド位置" id="worksDots"></div>
       <a class="view-more" href="#">View More</a>
     </section>
 
-    <section class="about" id="about">
+    <section class="about reveal-section" id="about">
       <div class="section-heading">
         <h2>About</h2>
         <p>私について</p>
       </div>
       <div class="about-inner">
-        <div class="about-photo"><img src="./assets/about.jpg" alt="Tanaka Aoi"></div>
+        <div class="about-photo"><img src="./assets/my-photo.png" alt="Osei Domyo"></div>
         <div class="about-copy">
           <h3>Osei Domyo</h3>
           <p>「WebデザインとAIコーディングを学習中の道明央成です。」</p>
@@ -99,6 +100,68 @@
   </main>
 
   <footer id="contact"><small>©Tanaka Aoi</small></footer>
+
+  <script>
+    const revealItems = document.querySelectorAll('.reveal-section');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -10% 0px'
+    });
+
+    revealItems.forEach((item) => revealObserver.observe(item));
+
+    const worksGrid = document.getElementById('worksGrid');
+    const worksDots = document.getElementById('worksDots');
+    const workCards = Array.from(document.querySelectorAll('.work-card'));
+
+    function buildDots() {
+      workCards.forEach((_, index) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'works-dot' + (index === 0 ? ' is-active' : '');
+        dot.setAttribute('aria-label', `作品 ${index + 1} を表示`);
+        dot.addEventListener('click', () => {
+          const cardWidth = workCards[0].getBoundingClientRect().width + 16;
+          worksGrid.scrollTo({
+            left: cardWidth * index,
+            behavior: 'smooth'
+          });
+        });
+        worksDots.appendChild(dot);
+      });
+    }
+
+    function updateDots() {
+      const cards = workCards;
+      const containerWidth = worksGrid.clientWidth;
+      const cardWidth = cards[0].getBoundingClientRect().width + 16;
+      const index = Math.round(worksGrid.scrollLeft / cardWidth);
+      const dots = worksDots.querySelectorAll('.works-dot');
+
+      dots.forEach((dot, dotIndex) => {
+        dot.classList.toggle('is-active', dotIndex === index);
+      });
+    }
+
+    function initWorksCarousel() {
+      if (!worksGrid || !worksDots || !workCards.length) return;
+
+      buildDots();
+      worksGrid.addEventListener('scroll', updateDots, { passive: true });
+      window.addEventListener('resize', updateDots);
+      updateDots();
+    }
+
+    initWorksCarousel();
+  </script>
 </body>
 
 </html>
