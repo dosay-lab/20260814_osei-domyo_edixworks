@@ -42,8 +42,8 @@ img {
   width: 1440px;
   height: 663px;
   margin: 0 auto;
-  background: url("../assets/Figma_top.png") center/1440px 663px no-repeat;
-  color: #fff;
+  background: url("../assets/Frutiger_Aero.png") center/1440px 663px no-repeat;
+  color: #2b2b2b;
 }
 
 .global-nav {
